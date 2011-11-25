@@ -28,6 +28,7 @@ BuildRequires:	sqlite3-devel
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	tracker-devel >= 0.12
 BuildRequires:	xz
+Requires:	grilo >= 0.1.17
 Obsoletes:	totem-jamendo
 Obsoletes:	totem-tracker
 Obsoletes:	totem-upnp
