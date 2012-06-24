@@ -1,33 +1,34 @@
 Summary:	Grilo plugins
 Name:		grilo-plugins
-Version:	0.1.18
-Release:	3
+Version:	0.1.19
+Release:	1
 License:	LGPL v2.1+
 Group:		Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/grilo-plugins/0.1/%{name}-%{version}.tar.xz
-# Source0-md5:	7bea4ea6b58c345ffa9ded177b917ff3
+# Source0-md5:	812a4203ba9ea5a195e3dd629bfa17d6
 URL:		http://live.gnome.org/Grilo
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	glib2-devel >= 1:2.26.0
-BuildRequires:	gmime-devel >= 2.4
+BuildRequires:	glib2-devel >= 1:2.28.0
+BuildRequires:	gmime-devel >= 2.6.0
 BuildRequires:	gnome-common
-BuildRequires:	grilo-devel >= 0.1.18
+BuildRequires:	grilo-devel >= 0.1.19
 BuildRequires:	gupnp-av-devel >= 0.5
 BuildRequires:	gupnp-devel >= 0.13
 BuildRequires:	libgcrypt-devel
 BuildRequires:	libgdata-devel >= 0.9.1
+BuildRequires:	libquvi-devel >= 0.4.0
 BuildRequires:	libsoup-devel >= 2.4
-BuildRequires:	libtool >= 2.2.6
+BuildRequires:	libtool >= 2:2.2.6
 BuildRequires:	libxml2-devel
 BuildRequires:	pkgconfig
-BuildRequires:	quvi-devel >= 0.2.15
 BuildRequires:	rest-devel >= 0.7
 BuildRequires:	sqlite3-devel
 BuildRequires:	tar >= 1:1.22
+BuildRequires:	totem-pl-parser-devel >= 3.4.1
 BuildRequires:	tracker-devel >= 0.12
 BuildRequires:	xz
-Requires:	grilo >= 0.1.17
+Requires:	grilo >= 0.1.19
 Obsoletes:	totem-jamendo
 Obsoletes:	totem-tracker
 Obsoletes:	totem-upnp
@@ -94,8 +95,14 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/grilo-0.1/grl-metadata-store.xml
 %attr(755,root,root) %{_libdir}/grilo-0.1/libgrlmetadatastore.so
 
+%{_libdir}/grilo-0.1/grl-optical-media.xml
+%attr(755,root,root) %{_libdir}/grilo-0.1/libgrloptical-media.so
+
 %{_libdir}/grilo-0.1/grl-podcasts.xml
 %attr(755,root,root) %{_libdir}/grilo-0.1/libgrlpodcasts.so
+
+%{_libdir}/grilo-0.1/grl-shoutcast.xml
+%attr(755,root,root) %{_libdir}/grilo-0.1/libgrlshoutcast.so
 
 %{_libdir}/grilo-0.1/grl-vimeo.xml
 %attr(755,root,root) %{_libdir}/grilo-0.1/libgrlvimeo.so
