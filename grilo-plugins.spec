@@ -1,18 +1,18 @@
 Summary:	Grilo plugins
 Name:		grilo-plugins
-Version:	0.1.19
+Version:	0.1.20
 Release:	1
 License:	LGPL v2.1+
 Group:		Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/grilo-plugins/0.1/%{name}-%{version}.tar.xz
-# Source0-md5:	812a4203ba9ea5a195e3dd629bfa17d6
+# Source0-md5:	f0b7d78e2d306752fd00c898f2e87f0b
 URL:		http://live.gnome.org/Grilo
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	glib2-devel >= 1:2.28.0
 BuildRequires:	gmime-devel >= 2.6.0
 BuildRequires:	gnome-common
-BuildRequires:	grilo-devel >= 0.1.19
+BuildRequires:	grilo-devel >= 0.1.20
 BuildRequires:	gupnp-av-devel >= 0.5
 BuildRequires:	gupnp-devel >= 0.13
 BuildRequires:	libgcrypt-devel
