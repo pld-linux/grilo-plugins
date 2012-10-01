@@ -1,18 +1,18 @@
 Summary:	Grilo plugins
 Name:		grilo-plugins
-Version:	0.1.20
+Version:	0.2.0
 Release:	1
 License:	LGPL v2.1+
 Group:		Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/grilo-plugins/0.1/%{name}-%{version}.tar.xz
-# Source0-md5:	f0b7d78e2d306752fd00c898f2e87f0b
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/grilo-plugins/0.2/%{name}-%{version}.tar.xz
+# Source0-md5:	9a3bfc5295a20c0474ceb2473f2761e4
 URL:		http://live.gnome.org/Grilo
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	glib2-devel >= 1:2.28.0
 BuildRequires:	gmime-devel >= 2.6.0
 BuildRequires:	gnome-common
-BuildRequires:	grilo-devel >= 0.1.20
+BuildRequires:	grilo-devel >= 0.2.0
 BuildRequires:	gupnp-av-devel >= 0.5
 BuildRequires:	gupnp-devel >= 0.13
 BuildRequires:	libgcrypt-devel
@@ -28,7 +28,7 @@ BuildRequires:	tar >= 1:1.22
 BuildRequires:	totem-pl-parser-devel >= 3.4.1
 BuildRequires:	tracker-devel >= 0.12
 BuildRequires:	xz
-Requires:	grilo >= 0.1.19
+Requires:	grilo >= 0.2.0
 Obsoletes:	totem-jamendo
 Obsoletes:	totem-tracker
 Obsoletes:	totem-upnp
@@ -57,7 +57,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/grilo-0.1/*.la
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/grilo-0.2/*.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -65,53 +65,53 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
-%{_libdir}/grilo-0.1/grl-apple-trailers.xml
-%attr(755,root,root) %{_libdir}/grilo-0.1/libgrlappletrailers.so
+%{_libdir}/grilo-0.2/grl-apple-trailers.xml
+%attr(755,root,root) %{_libdir}/grilo-0.2/libgrlappletrailers.so
 
-%{_libdir}/grilo-0.1/grl-bliptv.xml
-%attr(755,root,root) %{_libdir}/grilo-0.1/libgrlbliptv.so
+%{_libdir}/grilo-0.2/grl-bliptv.xml
+%attr(755,root,root) %{_libdir}/grilo-0.2/libgrlbliptv.so
 
-%{_libdir}/grilo-0.1/grl-bookmarks.xml
-%attr(755,root,root) %{_libdir}/grilo-0.1/libgrlbookmarks.so
+%{_libdir}/grilo-0.2/grl-bookmarks.xml
+%attr(755,root,root) %{_libdir}/grilo-0.2/libgrlbookmarks.so
 
-%{_libdir}/grilo-0.1/grl-filesystem.xml
-%attr(755,root,root) %{_libdir}/grilo-0.1/libgrlfilesystem.so
+%{_libdir}/grilo-0.2/grl-filesystem.xml
+%attr(755,root,root) %{_libdir}/grilo-0.2/libgrlfilesystem.so
 
-%{_libdir}/grilo-0.1/grl-flickr.xml
-%attr(755,root,root) %{_libdir}/grilo-0.1/libgrlflickr.so
+%{_libdir}/grilo-0.2/grl-flickr.xml
+%attr(755,root,root) %{_libdir}/grilo-0.2/libgrlflickr.so
 
-%{_libdir}/grilo-0.1/grl-gravatar.xml
-%attr(755,root,root) %{_libdir}/grilo-0.1/libgrlgravatar.so
+%{_libdir}/grilo-0.2/grl-gravatar.xml
+%attr(755,root,root) %{_libdir}/grilo-0.2/libgrlgravatar.so
 
-%{_libdir}/grilo-0.1/grl-jamendo.xml
-%attr(755,root,root) %{_libdir}/grilo-0.1/libgrljamendo.so
+%{_libdir}/grilo-0.2/grl-jamendo.xml
+%attr(755,root,root) %{_libdir}/grilo-0.2/libgrljamendo.so
 
-%{_libdir}/grilo-0.1/grl-lastfm-albumart.xml
-%attr(755,root,root) %{_libdir}/grilo-0.1/libgrllastfm-albumart.so
+%{_libdir}/grilo-0.2/grl-lastfm-albumart.xml
+%attr(755,root,root) %{_libdir}/grilo-0.2/libgrllastfm-albumart.so
 
-%{_libdir}/grilo-0.1/grl-local-metadata.xml
-%attr(755,root,root) %{_libdir}/grilo-0.1/libgrllocalmetadata.so
+%{_libdir}/grilo-0.2/grl-local-metadata.xml
+%attr(755,root,root) %{_libdir}/grilo-0.2/libgrllocalmetadata.so
 
-%{_libdir}/grilo-0.1/grl-metadata-store.xml
-%attr(755,root,root) %{_libdir}/grilo-0.1/libgrlmetadatastore.so
+%{_libdir}/grilo-0.2/grl-metadata-store.xml
+%attr(755,root,root) %{_libdir}/grilo-0.2/libgrlmetadatastore.so
 
-%{_libdir}/grilo-0.1/grl-optical-media.xml
-%attr(755,root,root) %{_libdir}/grilo-0.1/libgrloptical-media.so
+%{_libdir}/grilo-0.2/grl-optical-media.xml
+%attr(755,root,root) %{_libdir}/grilo-0.2/libgrloptical-media.so
 
-%{_libdir}/grilo-0.1/grl-podcasts.xml
-%attr(755,root,root) %{_libdir}/grilo-0.1/libgrlpodcasts.so
+%{_libdir}/grilo-0.2/grl-podcasts.xml
+%attr(755,root,root) %{_libdir}/grilo-0.2/libgrlpodcasts.so
 
-%{_libdir}/grilo-0.1/grl-shoutcast.xml
-%attr(755,root,root) %{_libdir}/grilo-0.1/libgrlshoutcast.so
+%{_libdir}/grilo-0.2/grl-shoutcast.xml
+%attr(755,root,root) %{_libdir}/grilo-0.2/libgrlshoutcast.so
 
-%{_libdir}/grilo-0.1/grl-vimeo.xml
-%attr(755,root,root) %{_libdir}/grilo-0.1/libgrlvimeo.so
+%{_libdir}/grilo-0.2/grl-vimeo.xml
+%attr(755,root,root) %{_libdir}/grilo-0.2/libgrlvimeo.so
 
-%{_libdir}/grilo-0.1/grl-upnp.xml
-%attr(755,root,root) %{_libdir}/grilo-0.1/libgrlupnp.so
+%{_libdir}/grilo-0.2/grl-upnp.xml
+%attr(755,root,root) %{_libdir}/grilo-0.2/libgrlupnp.so
 
-%{_libdir}/grilo-0.1/grl-tracker.xml
-%attr(755,root,root) %{_libdir}/grilo-0.1/libgrltracker.so
+%{_libdir}/grilo-0.2/grl-tracker.xml
+%attr(755,root,root) %{_libdir}/grilo-0.2/libgrltracker.so
 
-%{_libdir}/grilo-0.1/grl-youtube.xml
-%attr(755,root,root) %{_libdir}/grilo-0.1/libgrlyoutube.so
+%{_libdir}/grilo-0.2/grl-youtube.xml
+%attr(755,root,root) %{_libdir}/grilo-0.2/libgrlyoutube.so
