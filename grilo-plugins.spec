@@ -1,7 +1,7 @@
 Summary:	Grilo plugins
 Name:		grilo-plugins
 Version:	0.2.2
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/grilo-plugins/0.2/%{name}-%{version}.tar.xz
@@ -15,6 +15,8 @@ BuildRequires:	gnome-common
 BuildRequires:	grilo-devel >= 0.2.2
 BuildRequires:	gupnp-av-devel >= 0.5
 BuildRequires:	gupnp-devel >= 0.13
+BuildRequires:	json-glib-devel
+BuildRequires:	libdmapsharing-devel >= 2.9.12
 BuildRequires:	libgcrypt-devel
 BuildRequires:	libgdata-devel >= 0.9.1
 BuildRequires:	libquvi-devel >= 0.4.0
