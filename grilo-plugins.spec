@@ -5,7 +5,7 @@ Release:	1
 License:	LGPL v2.1+
 Group:		Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/grilo-plugins/0.2/%{name}-%{version}.tar.xz
-# Source0-md5:	b896137d06324de59068300296b86ffb
+# Source0-md5:	0fcd6a7e59cc24814a13f5b0da59cda2
 URL:		http://live.gnome.org/Grilo
 BuildRequires:	autoconf
 BuildRequires:	automake
