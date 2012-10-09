@@ -1,6 +1,6 @@
 Summary:	Grilo plugins
 Name:		grilo-plugins
-Version:	0.2.1
+Version:	0.2.2
 Release:	1
 License:	LGPL v2.1+
 Group:		Applications
@@ -12,7 +12,7 @@ BuildRequires:	automake
 BuildRequires:	glib2-devel >= 1:2.28.0
 BuildRequires:	gmime-devel >= 2.6.0
 BuildRequires:	gnome-common
-BuildRequires:	grilo-devel >= 0.2.0
+BuildRequires:	grilo-devel >= 0.2.2
 BuildRequires:	gupnp-av-devel >= 0.5
 BuildRequires:	gupnp-devel >= 0.13
 BuildRequires:	libgcrypt-devel
@@ -28,7 +28,7 @@ BuildRequires:	tar >= 1:1.22
 BuildRequires:	totem-pl-parser-devel >= 3.4.1
 BuildRequires:	tracker-devel >= 0.12
 BuildRequires:	xz
-Requires:	grilo >= 0.2.0
+Requires:	grilo >= 0.2.2
 Obsoletes:	totem-jamendo
 Obsoletes:	totem-tracker
 Obsoletes:	totem-upnp
@@ -74,6 +74,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/grilo-0.2/grl-bookmarks.xml
 %attr(755,root,root) %{_libdir}/grilo-0.2/libgrlbookmarks.so
 
+%{_libdir}/grilo-0.2/grl-dmap.xml
+%attr(755,root,root) %{_libdir}/grilo-0.2/libgrldmap.so
+
 %{_libdir}/grilo-0.2/grl-filesystem.xml
 %attr(755,root,root) %{_libdir}/grilo-0.2/libgrlfilesystem.so
 
@@ -109,6 +112,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %{_libdir}/grilo-0.2/grl-upnp.xml
 %attr(755,root,root) %{_libdir}/grilo-0.2/libgrlupnp.so
+
+%{_libdir}/grilo-0.2/grl-tmdb.xml
+%attr(755,root,root) %{_libdir}/grilo-0.2/libgrltmdb.so
 
 %{_libdir}/grilo-0.2/grl-tracker.xml
 %attr(755,root,root) %{_libdir}/grilo-0.2/libgrltracker.so
