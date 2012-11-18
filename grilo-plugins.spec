@@ -1,18 +1,18 @@
 Summary:	Grilo plugins
 Name:		grilo-plugins
-Version:	0.2.2
-Release:	2
+Version:	0.2.3
+Release:	1
 License:	LGPL v2.1+
 Group:		Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/grilo-plugins/0.2/%{name}-%{version}.tar.xz
-# Source0-md5:	0fcd6a7e59cc24814a13f5b0da59cda2
+# Source0-md5:	2321e47a53f5fa2242fa5221e013a297
 URL:		http://live.gnome.org/Grilo
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	glib2-devel >= 1:2.28.0
 BuildRequires:	gmime-devel >= 2.6.0
 BuildRequires:	gnome-common
-BuildRequires:	grilo-devel >= 0.2.2
+BuildRequires:	grilo-devel >= 0.2.3
 BuildRequires:	gupnp-av-devel >= 0.5
 BuildRequires:	gupnp-devel >= 0.13
 BuildRequires:	json-glib-devel
@@ -30,7 +30,7 @@ BuildRequires:	tar >= 1:1.22
 BuildRequires:	totem-pl-parser-devel >= 3.4.1
 BuildRequires:	tracker-devel >= 0.12
 BuildRequires:	xz
-Requires:	grilo >= 0.2.2
+Requires:	grilo >= 0.2.3
 Obsoletes:	totem-jamendo
 Obsoletes:	totem-tracker
 Obsoletes:	totem-upnp
