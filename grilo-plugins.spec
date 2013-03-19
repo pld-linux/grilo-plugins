@@ -1,17 +1,19 @@
-Summary:	Grilo plugins
+Summary:	Collection of plugins for Grilo
 Name:		grilo-plugins
-Version:	0.2.3
+Version:	0.2.5
 Release:	1
 License:	LGPL v2.1+
 Group:		Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/grilo-plugins/0.2/%{name}-%{version}.tar.xz
-# Source0-md5:	2321e47a53f5fa2242fa5221e013a297
+# Source0-md5:	a73f0f022c0a2d1f6c7f44de98df38dc
+Patch0:		automake-1.13.patch
 URL:		http://live.gnome.org/Grilo
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	glib2-devel >= 1:2.28.0
 BuildRequires:	gmime-devel >= 2.6.0
 BuildRequires:	gnome-common
+BuildRequires:	gnome-doc-utils >= 0.9.0
 BuildRequires:	grilo-devel >= 0.2.3
 BuildRequires:	gupnp-av-devel >= 0.5
 BuildRequires:	gupnp-devel >= 0.13
@@ -42,6 +44,7 @@ multimedia content providers.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__libtoolize}
@@ -59,12 +62,14 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%find_lang %{name} --with-gnome
+
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/grilo-0.2/*.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files
+%files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
 %{_libdir}/grilo-0.2/grl-apple-trailers.xml
