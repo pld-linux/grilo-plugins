@@ -1,12 +1,11 @@
 Summary:	Collection of plugins for Grilo
 Name:		grilo-plugins
-Version:	0.2.5
+Version:	0.2.6
 Release:	1
 License:	LGPL v2.1+
 Group:		Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/grilo-plugins/0.2/%{name}-%{version}.tar.xz
-# Source0-md5:	a73f0f022c0a2d1f6c7f44de98df38dc
-Patch0:		automake-1.13.patch
+# Source0-md5:	9504b53f6e35276b05ffb18a30d8ce39
 URL:		http://live.gnome.org/Grilo
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -44,7 +43,6 @@ multimedia content providers.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %{__libtoolize}
@@ -110,6 +108,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %{_libdir}/grilo-0.2/grl-podcasts.xml
 %attr(755,root,root) %{_libdir}/grilo-0.2/libgrlpodcasts.so
+
+%{_libdir}/grilo-0.2/grl-raitv.xml
+%attr(755,root,root) %{_libdir}/grilo-0.2/libgrlraitv.so
 
 %{_libdir}/grilo-0.2/grl-shoutcast.xml
 %attr(755,root,root) %{_libdir}/grilo-0.2/libgrlshoutcast.so
