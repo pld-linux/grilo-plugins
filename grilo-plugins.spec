@@ -1,9 +1,10 @@
 Summary:	Collection of plugins for Grilo
+Summary(pl.UTF-8):	Zestaw wtyczek dla Grilo
 Name:		grilo-plugins
 Version:	0.2.6
 Release:	1
 License:	LGPL v2.1+
-Group:		Applications
+Group:		Applications/Multimedia
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/grilo-plugins/0.2/%{name}-%{version}.tar.xz
 # Source0-md5:	9504b53f6e35276b05ffb18a30d8ce39
 URL:		http://live.gnome.org/Grilo
@@ -40,6 +41,10 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Collection of plugins for Grilo implementing Grilo's API for various
 multimedia content providers.
+
+%description -l pl.UTF-8
+Zestaw wtyczek dla Grilo, zawierających implementuje API Grilo dla
+różnych dostawców treści multimedialnych.
 
 %prep
 %setup -q
