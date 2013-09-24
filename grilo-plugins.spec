@@ -1,30 +1,34 @@
 Summary:	Collection of plugins for Grilo
 Summary(pl.UTF-8):	Zestaw wtyczek dla Grilo
 Name:		grilo-plugins
-Version:	0.2.6
+Version:	0.2.9
 Release:	1
 License:	LGPL v2.1+
 Group:		Applications/Multimedia
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/grilo-plugins/0.2/%{name}-%{version}.tar.xz
-# Source0-md5:	9504b53f6e35276b05ffb18a30d8ce39
+# Source0-md5:	cdf6d3d410526bcd2abdec28830175c4
 URL:		http://live.gnome.org/Grilo
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 BuildRequires:	glib2-devel >= 1:2.28.0
 BuildRequires:	gmime-devel >= 2.6.0
 BuildRequires:	gnome-common
 BuildRequires:	gnome-doc-utils >= 0.9.0
-BuildRequires:	grilo-devel >= 0.2.3
+BuildRequires:	gnome-online-accounts-devel >= 3.7.1
+BuildRequires:	grilo-devel >= 0.2.6
+BuildRequires:	gssdp-devel
 BuildRequires:	gupnp-av-devel >= 0.5
 BuildRequires:	gupnp-devel >= 0.13
+BuildRequires:	intltool >= 0.40.0
 BuildRequires:	json-glib-devel
 BuildRequires:	libdmapsharing-devel >= 2.9.12
 BuildRequires:	libgcrypt-devel
 BuildRequires:	libgdata-devel >= 0.9.1
+BuildRequires:	liboauth-devel
 BuildRequires:	libquvi-devel >= 0.4.0
 BuildRequires:	libsoup-devel >= 2.4
 BuildRequires:	libtool >= 2:2.2.6
-BuildRequires:	libxml2-devel
+BuildRequires:	libxml2-devel >= 2.0
 BuildRequires:	pkgconfig
 BuildRequires:	rest-devel >= 0.7
 BuildRequires:	sqlite3-devel
@@ -32,7 +36,8 @@ BuildRequires:	tar >= 1:1.22
 BuildRequires:	totem-pl-parser-devel >= 3.4.1
 BuildRequires:	tracker-devel >= 0.12
 BuildRequires:	xz
-Requires:	grilo >= 0.2.3
+Requires:	glib2 >= 1:2.28.0
+Requires:	grilo >= 0.2.6
 Obsoletes:	totem-jamendo
 Obsoletes:	totem-tracker
 Obsoletes:	totem-upnp
@@ -104,6 +109,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %{_libdir}/grilo-0.2/grl-local-metadata.xml
 %attr(755,root,root) %{_libdir}/grilo-0.2/libgrllocalmetadata.so
+
+%{_libdir}/grilo-0.2/grl-magnatune.xml
+%attr(755,root,root) %{_libdir}/grilo-0.2/libgrlmagnatune.so
 
 %{_libdir}/grilo-0.2/grl-metadata-store.xml
 %attr(755,root,root) %{_libdir}/grilo-0.2/libgrlmetadatastore.so
