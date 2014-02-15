@@ -1,21 +1,21 @@
 Summary:	Collection of plugins for Grilo
 Summary(pl.UTF-8):	Zestaw wtyczek dla Grilo
 Name:		grilo-plugins
-Version:	0.2.9
-Release:	4
+Version:	0.2.10
+Release:	1
 License:	LGPL v2.1+
 Group:		Applications/Multimedia
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/grilo-plugins/0.2/%{name}-%{version}.tar.xz
-# Source0-md5:	cdf6d3d410526bcd2abdec28830175c4
+# Source0-md5:	5ce7e6909f1778dcad314a3ac99fa6f6
 URL:		http://live.gnome.org/Grilo
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
-BuildRequires:	glib2-devel >= 1:2.28.0
+BuildRequires:	glib2-devel >= 1:2.32
 BuildRequires:	gmime-devel >= 2.6.0
 BuildRequires:	gnome-common
 BuildRequires:	gnome-doc-utils >= 0.9.0
 BuildRequires:	gnome-online-accounts-devel >= 3.7.1
-BuildRequires:	grilo-devel >= 0.2.6
+BuildRequires:	grilo-devel >= 0.2.8
 BuildRequires:	gssdp-devel
 BuildRequires:	gupnp-av-devel >= 0.5
 BuildRequires:	gupnp-devel >= 0.13
@@ -31,13 +31,14 @@ BuildRequires:	libtool >= 2:2.2.6
 BuildRequires:	libxml2-devel >= 2.0
 BuildRequires:	pkgconfig
 BuildRequires:	rest-devel >= 0.7
-BuildRequires:	sqlite3-devel
+BuildRequires:	sqlite3-devel >= 3
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	totem-pl-parser-devel >= 3.4.1
 BuildRequires:	tracker-devel >= 0.12
 BuildRequires:	xz
-Requires:	glib2 >= 1:2.28.0
-Requires:	grilo >= 0.2.6
+BuildRequires:	yelp-tools
+Requires:	glib2 >= 1:2.32
+Requires:	grilo >= 0.2.8
 Obsoletes:	totem-jamendo
 Obsoletes:	totem-tracker
 Obsoletes:	totem-upnp
@@ -98,8 +99,14 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/grilo-0.2/grl-flickr.xml
 %attr(755,root,root) %{_libdir}/grilo-0.2/libgrlflickr.so
 
+%{_libdir}/grilo-0.2/grl-freebox.xml
+%attr(755,root,root) %{_libdir}/grilo-0.2/libgrlfreebox.so
+
 %{_libdir}/grilo-0.2/grl-gravatar.xml
 %attr(755,root,root) %{_libdir}/grilo-0.2/libgrlgravatar.so
+
+%{_libdir}/grilo-0.2/grl-guardianvideos.xml
+%attr(755,root,root) %{_libdir}/grilo-0.2/libgrlguardianvideos.so
 
 %{_libdir}/grilo-0.2/grl-jamendo.xml
 %attr(755,root,root) %{_libdir}/grilo-0.2/libgrljamendo.so
@@ -119,6 +126,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/grilo-0.2/grl-optical-media.xml
 %attr(755,root,root) %{_libdir}/grilo-0.2/libgrloptical-media.so
 
+%{_libdir}/grilo-0.2/grl-pocket.xml
+%attr(755,root,root) %{_libdir}/grilo-0.2/libgrlpocket.so
+
 %{_libdir}/grilo-0.2/grl-podcasts.xml
 %attr(755,root,root) %{_libdir}/grilo-0.2/libgrlpodcasts.so
 
@@ -136,6 +146,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %{_libdir}/grilo-0.2/grl-tmdb.xml
 %attr(755,root,root) %{_libdir}/grilo-0.2/libgrltmdb.so
+%dir %{_datadir}/help/C/examples
+%{_datadir}/help/C/examples/example-tmdb.c
 
 %{_libdir}/grilo-0.2/grl-tracker.xml
 %attr(755,root,root) %{_libdir}/grilo-0.2/libgrltracker.so
