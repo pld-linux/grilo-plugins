@@ -1,20 +1,22 @@
 Summary:	Collection of plugins for Grilo
 Summary(pl.UTF-8):	Zestaw wtyczek dla Grilo
 Name:		grilo-plugins
-Version:	0.2.10
+Version:	0.2.11
 Release:	1
 License:	LGPL v2.1+
 Group:		Applications/Multimedia
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/grilo-plugins/0.2/%{name}-%{version}.tar.xz
-# Source0-md5:	5ce7e6909f1778dcad314a3ac99fa6f6
+# Source0-md5:	57100a2b682c3e45ba14ca19f207b419
 URL:		http://live.gnome.org/Grilo
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
-BuildRequires:	glib2-devel >= 1:2.32
+BuildRequires:	glib2-devel >= 1:2.34
 BuildRequires:	gmime-devel >= 2.6.0
 BuildRequires:	gnome-common
 BuildRequires:	gnome-doc-utils >= 0.9.0
 BuildRequires:	gnome-online-accounts-devel >= 3.7.1
+# for pocket
+#BuildRequires:	gnome-online-accounts-devel >= 3.11.4
 BuildRequires:	grilo-devel >= 0.2.8
 BuildRequires:	gssdp-devel
 BuildRequires:	gupnp-av-devel >= 0.5
@@ -37,7 +39,7 @@ BuildRequires:	totem-pl-parser-devel >= 3.4.1
 BuildRequires:	tracker-devel >= 0.12
 BuildRequires:	xz
 BuildRequires:	yelp-tools
-Requires:	glib2 >= 1:2.32
+Requires:	glib2 >= 1:2.34
 Requires:	grilo >= 0.2.8
 Obsoletes:	totem-jamendo
 Obsoletes:	totem-tracker
@@ -126,8 +128,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/grilo-0.2/grl-optical-media.xml
 %attr(755,root,root) %{_libdir}/grilo-0.2/libgrloptical-media.so
 
-%{_libdir}/grilo-0.2/grl-pocket.xml
-%attr(755,root,root) %{_libdir}/grilo-0.2/libgrlpocket.so
+# waiting for stable gnome-online-accounts-devel >= 3.11.4
+#%{_libdir}/grilo-0.2/grl-pocket.xml
+#%attr(755,root,root) %{_libdir}/grilo-0.2/libgrlpocket.so
 
 %{_libdir}/grilo-0.2/grl-podcasts.xml
 %attr(755,root,root) %{_libdir}/grilo-0.2/libgrlpodcasts.so
