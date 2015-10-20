@@ -1,12 +1,13 @@
 Summary:	Collection of plugins for Grilo
 Summary(pl.UTF-8):	Zestaw wtyczek dla Grilo
 Name:		grilo-plugins
-Version:	0.2.13
-Release:	2
+Version:	0.2.16
+Release:	1
 License:	LGPL v2.1+
 Group:		Applications/Multimedia
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/grilo-plugins/0.2/%{name}-%{version}.tar.xz
-# Source0-md5:	45030aab3f21b561b1c899ebb7dce54d
+# Source0-md5:	62ecaad877b485a950259eef1ef38c18
+Patch0:		%{name}-sh.patch
 URL:		http://live.gnome.org/Grilo
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -15,21 +16,20 @@ BuildRequires:	avahi-gobject-devel
 BuildRequires:	glib2-devel >= 1:2.36
 BuildRequires:	gmime-devel >= 2.6.0
 BuildRequires:	gnome-common
-BuildRequires:	gnome-doc-utils >= 0.9.0
-BuildRequires:	gnome-online-accounts-devel >= 3.11.4
-BuildRequires:	gom-devel >= 0.2.1
-BuildRequires:	grilo-devel >= 0.2.10
+BuildRequires:	gnome-online-accounts-devel >= 3.18.0
+BuildRequires:	gom-devel >= 0.3.0
+BuildRequires:	grilo-devel >= 0.2.12
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	json-glib-devel
 BuildRequires:	libdmapsharing-devel >= 2.9.12
 BuildRequires:	libgcrypt-devel
 BuildRequires:	libgdata-devel >= 0.9.1
-BuildRequires:	libmediaart-devel
+BuildRequires:	libmediaart2-devel >= 1.9
 BuildRequires:	liboauth-devel
 BuildRequires:	libsoup-devel >= 2.4
 BuildRequires:	libtool >= 2:2.2.6
 BuildRequires:	libxml2-devel >= 2.0
-BuildRequires:	lua52-devel >= 5.2.0
+BuildRequires:	lua53-devel >= 5.3.0
 BuildRequires:	pkgconfig
 BuildRequires:	rest-devel >= 0.7.90
 BuildRequires:	sqlite3-devel >= 3
@@ -40,9 +40,9 @@ BuildRequires:	xz
 BuildRequires:	yelp-tools
 Requires:	glib2 >= 1:2.36
 Requires:	gmime >= 2.6.0
-Requires:	gnome-online-accounts-libs >= 3.11.4
-Requires:	gom >= 0.2.1
-Requires:	grilo >= 0.2.10
+Requires:	gnome-online-accounts-libs >= 3.18.0
+Requires:	gom >= 0.3.0
+Requires:	grilo >= 0.2.12
 Requires:	libdmapsharing >= 2.9.12
 Requires:	libgdata >= 0.9.1
 Requires:	rest >= 0.7.90
@@ -62,6 +62,7 @@ różnych dostawców treści multimedialnych.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__libtoolize}
@@ -89,11 +90,6 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
-%{_libdir}/grilo-0.2/grl-apple-trailers.xml
-%attr(755,root,root) %{_libdir}/grilo-0.2/libgrlappletrailers.so
-
-%{_libdir}/grilo-0.2/grl-bliptv.xml
-%attr(755,root,root) %{_libdir}/grilo-0.2/libgrlbliptv.so
 
 %{_libdir}/grilo-0.2/grl-bookmarks.xml
 %attr(755,root,root) %{_libdir}/grilo-0.2/libgrlbookmarks.so
@@ -101,8 +97,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/grilo-0.2/grl-dleyna.xml
 %attr(755,root,root) %{_libdir}/grilo-0.2/libgrldleyna.so
 
-%{_libdir}/grilo-0.2/grl-dmap.xml
-%attr(755,root,root) %{_libdir}/grilo-0.2/libgrldmap.so
+%{_libdir}/grilo-0.2/grl-daap.xml
+%attr(755,root,root) %{_libdir}/grilo-0.2/libgrldaap.so
+%{_libdir}/grilo-0.2/grl-dpap.xml
+%attr(755,root,root) %{_libdir}/grilo-0.2/libgrldpap.so
 
 %{_libdir}/grilo-0.2/grl-filesystem.xml
 %attr(755,root,root) %{_libdir}/grilo-0.2/libgrlfilesystem.so
@@ -129,11 +127,19 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/grilo-0.2/libgrlluafactory.so
 %dir %{_datadir}/grilo-plugins
 %dir %{_datadir}/grilo-plugins/grl-lua-factory
+%{_datadir}/grilo-plugins/grl-lua-factory/grl-appletrailers.gresource
+%{_datadir}/grilo-plugins/grl-lua-factory/grl-appletrailers.lua
+%{_datadir}/grilo-plugins/grl-lua-factory/grl-euronews.gresource
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-euronews.lua
+%{_datadir}/grilo-plugins/grl-lua-factory/grl-guardianvideos.gresource
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-guardianvideos.lua
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-metrolyrics.lua
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-musicbrainz.lua
+%{_datadir}/grilo-plugins/grl-lua-factory/grl-pocket.gresource
+%{_datadir}/grilo-plugins/grl-lua-factory/grl-pocket.lua
+%{_datadir}/grilo-plugins/grl-lua-factory/grl-radiofrance.gresource
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-radiofrance.lua
+%{_datadir}/grilo-plugins/grl-lua-factory/grl-video-title-parsing.lua
 
 %{_libdir}/grilo-0.2/grl-magnatune.xml
 %attr(755,root,root) %{_libdir}/grilo-0.2/libgrlmagnatune.so
@@ -141,11 +147,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/grilo-0.2/grl-metadata-store.xml
 %attr(755,root,root) %{_libdir}/grilo-0.2/libgrlmetadatastore.so
 
+%{_libdir}/grilo-0.2/grl-opensubtitles.xml
+%attr(755,root,root) %{_libdir}/grilo-0.2/libgrlopensubtitles.so
+
 %{_libdir}/grilo-0.2/grl-optical-media.xml
 %attr(755,root,root) %{_libdir}/grilo-0.2/libgrloptical-media.so
-
-%{_libdir}/grilo-0.2/grl-pocket.xml
-%attr(755,root,root) %{_libdir}/grilo-0.2/libgrlpocket.so
 
 %{_libdir}/grilo-0.2/grl-podcasts.xml
 %attr(755,root,root) %{_libdir}/grilo-0.2/libgrlpodcasts.so
