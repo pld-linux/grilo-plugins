@@ -2,7 +2,7 @@ Summary:	Collection of plugins for Grilo
 Summary(pl.UTF-8):	Zestaw wtyczek dla Grilo
 Name:		grilo-plugins
 Version:	0.2.16
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		Applications/Multimedia
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/grilo-plugins/0.2/%{name}-%{version}.tar.xz
@@ -47,6 +47,7 @@ Requires:	libdmapsharing >= 2.9.12
 Requires:	libgdata >= 0.9.1
 Requires:	rest >= 0.7.90
 Requires:	totem-pl-parser >= 3.4.1
+Suggests:	dleyna-server
 Obsoletes:	totem-jamendo
 Obsoletes:	totem-tracker
 Obsoletes:	totem-upnp
