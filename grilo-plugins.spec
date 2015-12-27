@@ -1,12 +1,12 @@
 Summary:	Collection of plugins for Grilo
 Summary(pl.UTF-8):	Zestaw wtyczek dla Grilo
 Name:		grilo-plugins
-Version:	0.2.16
-Release:	2
+Version:	0.2.17
+Release:	1
 License:	LGPL v2.1+
 Group:		Applications/Multimedia
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/grilo-plugins/0.2/%{name}-%{version}.tar.xz
-# Source0-md5:	62ecaad877b485a950259eef1ef38c18
+# Source0-md5:	691621488045512ff002591631fc7c59
 Patch0:		%{name}-sh.patch
 URL:		http://live.gnome.org/Grilo
 BuildRequires:	autoconf >= 2.50
@@ -118,9 +118,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/grilo-0.2/grl-jamendo.xml
 %attr(755,root,root) %{_libdir}/grilo-0.2/libgrljamendo.so
 
-%{_libdir}/grilo-0.2/grl-lastfm-albumart.xml
-%attr(755,root,root) %{_libdir}/grilo-0.2/libgrllastfm-albumart.so
-
 %{_libdir}/grilo-0.2/grl-local-metadata.xml
 %attr(755,root,root) %{_libdir}/grilo-0.2/libgrllocalmetadata.so
 
@@ -134,12 +131,14 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-euronews.lua
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-guardianvideos.gresource
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-guardianvideos.lua
+%{_datadir}/grilo-plugins/grl-lua-factory/grl-lastfm-cover.lua
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-metrolyrics.lua
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-musicbrainz.lua
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-pocket.gresource
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-pocket.lua
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-radiofrance.gresource
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-radiofrance.lua
+%{_datadir}/grilo-plugins/grl-lua-factory/grl-spotify-cover.lua
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-video-title-parsing.lua
 
 %{_libdir}/grilo-0.2/grl-magnatune.xml
