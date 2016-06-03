@@ -13,6 +13,7 @@ BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 BuildRequires:	avahi-glib-devel
 BuildRequires:	avahi-gobject-devel
+BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.44
 BuildRequires:	gmime-devel >= 2.6.0
 BuildRequires:	gnome-common
