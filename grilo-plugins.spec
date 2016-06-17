@@ -1,12 +1,12 @@
 Summary:	Collection of plugins for Grilo
 Summary(pl.UTF-8):	Zestaw wtyczek dla Grilo
 Name:		grilo-plugins
-Version:	0.3.1
+Version:	0.3.2
 Release:	1
 License:	LGPL v2.1+
 Group:		Applications/Multimedia
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/grilo-plugins/0.3/%{name}-%{version}.tar.xz
-# Source0-md5:	8e4ef3a6a8f66629d4f2c9fe7a05d8c9
+# Source0-md5:	eb25fbe4be83e77f2308d086177a8f4c
 Patch0:		%{name}-sh.patch
 URL:		http://live.gnome.org/Grilo
 BuildRequires:	autoconf >= 2.50
@@ -19,7 +19,7 @@ BuildRequires:	gmime-devel >= 2.6.0
 BuildRequires:	gnome-common
 BuildRequires:	gnome-online-accounts-devel >= 3.18.0
 BuildRequires:	gom-devel >= 0.3.2
-BuildRequires:	grilo-devel >= 0.3.0
+BuildRequires:	grilo-devel >= 0.3.1
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	json-glib-devel
 BuildRequires:	libarchive-devel
@@ -44,7 +44,7 @@ Requires:	glib2 >= 1:2.44
 Requires:	gmime >= 2.6.0
 Requires:	gnome-online-accounts-libs >= 3.18.0
 Requires:	gom >= 0.3.2
-Requires:	grilo >= 0.3.0
+Requires:	grilo >= 0.3.1
 Requires:	libdmapsharing >= 2.9.12
 Requires:	libgdata >= 0.9.1
 Requires:	rest >= 0.7.90
@@ -118,12 +118,15 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrlyoutube.so
 %dir %{_datadir}/grilo-plugins
 %dir %{_datadir}/grilo-plugins/grl-lua-factory
+%{_datadir}/grilo-plugins/grl-lua-factory/grl-acoustid.lua
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-appletrailers.gresource
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-appletrailers.lua
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-euronews.gresource
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-euronews.lua
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-guardianvideos.gresource
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-guardianvideos.lua
+%{_datadir}/grilo-plugins/grl-lua-factory/grl-itunes-podcast.gresource
+%{_datadir}/grilo-plugins/grl-lua-factory/grl-itunes-podcast.lua
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-lastfm-cover.lua
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-metrolyrics.lua
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-musicbrainz.lua
@@ -132,6 +135,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-radiofrance.gresource
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-radiofrance.lua
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-spotify-cover.lua
+%{_datadir}/grilo-plugins/grl-lua-factory/grl-thegamesdb.lua
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-video-title-parsing.lua
 
 %dir %{_datadir}/help/C/examples
