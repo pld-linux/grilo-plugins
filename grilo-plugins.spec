@@ -1,12 +1,12 @@
 Summary:	Collection of plugins for Grilo
 Summary(pl.UTF-8):	Zestaw wtyczek dla Grilo
 Name:		grilo-plugins
-Version:	0.3.3
+Version:	0.3.4
 Release:	1
 License:	LGPL v2.1+
 Group:		Applications/Multimedia
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/grilo-plugins/0.3/%{name}-%{version}.tar.xz
-# Source0-md5:	3f6ca79a7972ace1112d3e1a502535b6
+# Source0-md5:	521f0af6dbc08d01e1b912d8f86869f1
 Patch0:		%{name}-sh.patch
 URL:		http://live.gnome.org/Grilo
 BuildRequires:	autoconf >= 2.50
@@ -19,6 +19,7 @@ BuildRequires:	gmime-devel >= 2.6.0
 BuildRequires:	gnome-common
 BuildRequires:	gnome-online-accounts-devel >= 3.18.0
 BuildRequires:	gom-devel >= 0.3.2
+BuildRequires:	gperf
 BuildRequires:	grilo-devel >= 0.3.1
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	json-glib-devel
