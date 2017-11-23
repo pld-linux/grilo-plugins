@@ -1,12 +1,12 @@
 Summary:	Collection of plugins for Grilo
 Summary(pl.UTF-8):	Zestaw wtyczek dla Grilo
 Name:		grilo-plugins
-Version:	0.3.4
+Version:	0.3.5
 Release:	1
 License:	LGPL v2.1+
 Group:		Applications/Multimedia
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/grilo-plugins/0.3/%{name}-%{version}.tar.xz
-# Source0-md5:	521f0af6dbc08d01e1b912d8f86869f1
+# Source0-md5:	4f968b738bdfa6f38392b35cef3d4b3d
 Patch0:		%{name}-sh.patch
 URL:		http://live.gnome.org/Grilo
 BuildRequires:	autoconf >= 2.50
@@ -108,7 +108,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrlmagnatune.so
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrlmetadatastore.so
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrlopensubtitles.so
-%attr(755,root,root) %{_libdir}/grilo-0.3/libgrloptical-media.so
+%attr(755,root,root) %{_libdir}/grilo-0.3/libgrlopticalmedia.so
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrlpodcasts.so
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrlraitv.so
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrlshoutcast.so
