@@ -1,16 +1,13 @@
 Summary:	Collection of plugins for Grilo
 Summary(pl.UTF-8):	Zestaw wtyczek dla Grilo
 Name:		grilo-plugins
-Version:	0.3.5
+Version:	0.3.8
 Release:	1
 License:	LGPL v2.1+
 Group:		Applications/Multimedia
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/grilo-plugins/0.3/%{name}-%{version}.tar.xz
-# Source0-md5:	4f968b738bdfa6f38392b35cef3d4b3d
-Patch0:		%{name}-sh.patch
+# Source0-md5:	e1a2c6c59610fce5799466dcd6507602
 URL:		http://live.gnome.org/Grilo
-BuildRequires:	autoconf >= 2.50
-BuildRequires:	automake
 BuildRequires:	avahi-glib-devel
 BuildRequires:	avahi-gobject-devel
 BuildRequires:	gettext-tools
@@ -33,6 +30,8 @@ BuildRequires:	libsoup-devel >= 2.4
 BuildRequires:	libtool >= 2:2.2.6
 BuildRequires:	libxml2-devel >= 2.0
 BuildRequires:	lua53-devel >= 5.3.0
+BuildRequires:	meson
+BuildRequires:	ninja
 BuildRequires:	pkgconfig
 BuildRequires:	rest-devel >= 0.7.90
 BuildRequires:	sqlite3-devel >= 3
@@ -66,37 +65,28 @@ różnych dostawców treści multimedialnych.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
-%{__libtoolize}
-%{__aclocal} -I m4
-%{__autoconf}
-%{__autoheader}
-%{__automake}
-%configure \
-	--disable-silent-rules
-%{__make}
+%meson build
+%ninja_build -C build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
+%ninja_install -C build
 
 %find_lang %{name} --with-gnome
-
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/grilo-0.3/*.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README
+%doc AUTHORS NEWS README
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrlbookmarks.so
-%attr(755,root,root) %{_libdir}/grilo-0.3/libgrldleyna.so
+%attr(755,root,root) %{_libdir}/grilo-0.3/libgrlchromaprint.so
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrldaap.so
+%attr(755,root,root) %{_libdir}/grilo-0.3/libgrldleyna.so
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrldpap.so
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrlfilesystem.so
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrlflickr.so
@@ -113,9 +103,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrlraitv.so
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrlshoutcast.so
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrlthetvdb.so
-%attr(755,root,root) %{_libdir}/grilo-0.3/libgrlvimeo.so
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrltmdb.so
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrltracker.so
+%attr(755,root,root) %{_libdir}/grilo-0.3/libgrlvimeo.so
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrlyoutube.so
 %dir %{_datadir}/grilo-plugins
 %dir %{_datadir}/grilo-plugins/grl-lua-factory
@@ -136,8 +126,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-radiofrance.gresource
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-radiofrance.lua
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-spotify-cover.lua
+%{_datadir}/grilo-plugins/grl-lua-factory/grl-theaudiodb-cover.lua
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-thegamesdb.lua
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-video-title-parsing.lua
 
 %dir %{_datadir}/help/C/examples
-%{_datadir}/help/C/examples/example-tmdb.c
+%{_datadir}/help/*/examples/example-tmdb.c
+%{_pkgconfigdir}/grilo-plugins-0.3.pc
