@@ -2,7 +2,7 @@ Summary:	Collection of plugins for Grilo
 Summary(pl.UTF-8):	Zestaw wtyczek dla Grilo
 Name:		grilo-plugins
 Version:	0.3.8
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		Applications/Multimedia
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/grilo-plugins/0.3/%{name}-%{version}.tar.xz
@@ -83,6 +83,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS NEWS README
+%dir %{_libdir}/grilo-0.3
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrlbookmarks.so
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrlchromaprint.so
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrldaap.so
@@ -131,5 +132,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-video-title-parsing.lua
 
 %dir %{_datadir}/help/C/examples
+%dir %{_datadir}/help/cs/examples
+%dir %{_datadir}/help/de/examples
+%dir %{_datadir}/help/es/examples
+%dir %{_datadir}/help/pl/examples
+%dir %{_datadir}/help/pt_BR/examples
+%dir %{_datadir}/help/sv/examples
 %{_datadir}/help/*/examples/example-tmdb.c
 %{_pkgconfigdir}/grilo-plugins-0.3.pc
