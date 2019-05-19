@@ -2,23 +2,24 @@ Summary:	Collection of plugins for Grilo
 Summary(pl.UTF-8):	Zestaw wtyczek dla Grilo
 Name:		grilo-plugins
 Version:	0.3.8
-Release:	2
+Release:	3
 License:	LGPL v2.1+
 Group:		Applications/Multimedia
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/grilo-plugins/0.3/%{name}-%{version}.tar.xz
 # Source0-md5:	e1a2c6c59610fce5799466dcd6507602
-URL:		http://live.gnome.org/Grilo
+# https://gitlab.gnome.org/GNOME/grilo-plugins/merge_requests/49.patch
+Patch0:		%{name}-libdmapsharing4.patch
+URL:		https://wiki.gnome.org/Projects/Grilo
 BuildRequires:	avahi-glib-devel
 BuildRequires:	avahi-gobject-devel
 BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.44
 BuildRequires:	gmime-devel >= 2.6.0
-BuildRequires:	gnome-common
 BuildRequires:	gnome-online-accounts-devel >= 3.18.0
 BuildRequires:	gom-devel >= 0.3.2
 BuildRequires:	gperf
-BuildRequires:	grilo-devel >= 0.3.1
-BuildRequires:	intltool >= 0.40.0
+BuildRequires:	grilo-devel >= 0.3.6
+BuildRequires:	gstreamer-devel >= 1.0
 BuildRequires:	json-glib-devel
 BuildRequires:	libarchive-devel
 BuildRequires:	libdmapsharing-devel >= 2.9.12
@@ -30,24 +31,23 @@ BuildRequires:	libsoup-devel >= 2.4
 BuildRequires:	libtool >= 2:2.2.6
 BuildRequires:	libxml2-devel >= 2.0
 BuildRequires:	lua53-devel >= 5.3.0
-BuildRequires:	meson
-BuildRequires:	ninja
+BuildRequires:	meson >= 0.37.0
+BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
-BuildRequires:	rest-devel >= 0.7.90
+BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	sqlite3-devel >= 3
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	totem-pl-parser-devel >= 3.4.1
-BuildRequires:	tracker-devel >= 0.12
+BuildRequires:	tracker-devel >= 2.0
 BuildRequires:	xz
 BuildRequires:	yelp-tools
 Requires:	glib2 >= 1:2.44
 Requires:	gmime >= 2.6.0
 Requires:	gnome-online-accounts-libs >= 3.18.0
 Requires:	gom >= 0.3.2
-Requires:	grilo >= 0.3.1
+Requires:	grilo >= 0.3.6
 Requires:	libdmapsharing >= 2.9.12
 Requires:	libgdata >= 0.9.1
-Requires:	rest >= 0.7.90
 Requires:	totem-pl-parser >= 3.4.1
 Suggests:	dleyna-server
 Obsoletes:	totem-jamendo
@@ -65,9 +65,11 @@ różnych dostawców treści multimedialnych.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %meson build
+
 %ninja_build -C build
 
 %install
