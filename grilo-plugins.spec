@@ -1,12 +1,21 @@
+#
+# Conditional build:
+%bcond_with	libdmapsharing4		# libdmapsharing 4 (3.9.x) instead of 3 (2.9.x)
+
+%if %{with libdmapsharing4}
+%define		libdmapsharing_ver	3.9.4
+%else
+%define		libdmapsharing_ver	2.9.12
+%endif
 Summary:	Collection of plugins for Grilo
 Summary(pl.UTF-8):	Zestaw wtyczek dla Grilo
 Name:		grilo-plugins
-Version:	0.3.8
-Release:	3
+Version:	0.3.9
+Release:	1
 License:	LGPL v2.1+
 Group:		Applications/Multimedia
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/grilo-plugins/0.3/%{name}-%{version}.tar.xz
-# Source0-md5:	e1a2c6c59610fce5799466dcd6507602
+# Source0-md5:	cf33a485d2440f63c95c64fc5dbae4ca
 # https://gitlab.gnome.org/GNOME/grilo-plugins/merge_requests/49.patch
 Patch0:		%{name}-libdmapsharing4.patch
 URL:		https://wiki.gnome.org/Projects/Grilo
@@ -18,11 +27,16 @@ BuildRequires:	gmime-devel >= 2.6.0
 BuildRequires:	gnome-online-accounts-devel >= 3.18.0
 BuildRequires:	gom-devel >= 0.3.2
 BuildRequires:	gperf
-BuildRequires:	grilo-devel >= 0.3.6
+BuildRequires:	grilo-devel >= 0.3.8
 BuildRequires:	gstreamer-devel >= 1.0
 BuildRequires:	json-glib-devel
 BuildRequires:	libarchive-devel
-BuildRequires:	libdmapsharing-devel >= 2.9.12
+BuildRequires:	libdmapsharing-devel >= %{libdmapsharing_ver}
+%if %{with libdmapsharing4}
+BuildRequires:	libdmapsharing-devel < 4.9
+%else
+BuildRequires:	libdmapsharing-devel < 3.9
+%endif
 BuildRequires:	libgcrypt-devel
 BuildRequires:	libgdata-devel >= 0.9.1
 BuildRequires:	libmediaart2-devel >= 1.9
@@ -45,8 +59,8 @@ Requires:	glib2 >= 1:2.44
 Requires:	gmime >= 2.6.0
 Requires:	gnome-online-accounts-libs >= 3.18.0
 Requires:	gom >= 0.3.2
-Requires:	grilo >= 0.3.6
-Requires:	libdmapsharing >= 2.9.12
+Requires:	grilo >= 0.3.8
+Requires:	libdmapsharing >= %{libdmapsharing_ver}
 Requires:	libgdata >= 0.9.1
 Requires:	totem-pl-parser >= 3.4.1
 Suggests:	dleyna-server
@@ -65,7 +79,9 @@ różnych dostawców treści multimedialnych.
 
 %prep
 %setup -q
+%if %{with libdmapsharing4}
 %patch0 -p1
+%endif
 
 %build
 %meson build
@@ -122,13 +138,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-itunes-podcast.gresource
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-itunes-podcast.lua
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-lastfm-cover.lua
-%{_datadir}/grilo-plugins/grl-lua-factory/grl-metrolyrics.lua
-%{_datadir}/grilo-plugins/grl-lua-factory/grl-musicbrainz.lua
-%{_datadir}/grilo-plugins/grl-lua-factory/grl-pocket.gresource
-%{_datadir}/grilo-plugins/grl-lua-factory/grl-pocket.lua
+%{_datadir}/grilo-plugins/grl-lua-factory/grl-musicbrainz-coverart.lua
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-radiofrance.gresource
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-radiofrance.lua
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-spotify-cover.lua
+%{_datadir}/grilo-plugins/grl-lua-factory/grl-steam-store.lua
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-theaudiodb-cover.lua
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-thegamesdb.lua
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-video-title-parsing.lua
