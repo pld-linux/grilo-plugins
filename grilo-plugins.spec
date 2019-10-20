@@ -10,12 +10,12 @@
 Summary:	Collection of plugins for Grilo
 Summary(pl.UTF-8):	Zestaw wtyczek dla Grilo
 Name:		grilo-plugins
-Version:	0.3.9
+Version:	0.3.10
 Release:	1
 License:	LGPL v2.1+
 Group:		Applications/Multimedia
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/grilo-plugins/0.3/%{name}-%{version}.tar.xz
-# Source0-md5:	cf33a485d2440f63c95c64fc5dbae4ca
+# Source0-md5:	ec0aa441155fae6bc4939492731b8ff4
 # https://gitlab.gnome.org/GNOME/grilo-plugins/merge_requests/49.patch
 Patch0:		%{name}-libdmapsharing4.patch
 URL:		https://wiki.gnome.org/Projects/Grilo
@@ -52,7 +52,7 @@ BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	sqlite3-devel >= 3
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	totem-pl-parser-devel >= 3.4.1
-BuildRequires:	tracker-devel >= 2.0
+BuildRequires:	tracker-devel >= 2.3.0
 BuildRequires:	xz
 BuildRequires:	yelp-tools
 Requires:	glib2 >= 1:2.44
@@ -63,6 +63,7 @@ Requires:	grilo >= 0.3.8
 Requires:	libdmapsharing >= %{libdmapsharing_ver}
 Requires:	libgdata >= 0.9.1
 Requires:	totem-pl-parser >= 3.4.1
+Requires:	tracker >= 2.3.0
 Suggests:	dleyna-server
 Obsoletes:	totem-jamendo
 Obsoletes:	totem-tracker
@@ -100,7 +101,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS NEWS README
+%doc AUTHORS NEWS README.md
 %dir %{_libdir}/grilo-0.3
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrlbookmarks.so
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrlchromaprint.so
