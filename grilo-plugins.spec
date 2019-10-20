@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_with	libdmapsharing4		# libdmapsharing 4 (3.9.x) instead of 3 (2.9.x)
+%bcond_without	libdmapsharing4		# libdmapsharing 4 (3.9.x) instead of 3 (2.9.x)
 
 %if %{with libdmapsharing4}
 %define		libdmapsharing_ver	3.9.4
