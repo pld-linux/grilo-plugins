@@ -10,12 +10,12 @@
 Summary:	Collection of plugins for Grilo
 Summary(pl.UTF-8):	Zestaw wtyczek dla Grilo
 Name:		grilo-plugins
-Version:	0.3.10
+Version:	0.3.11
 Release:	1
 License:	LGPL v2.1+
 Group:		Applications/Multimedia
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/grilo-plugins/0.3/%{name}-%{version}.tar.xz
-# Source0-md5:	ec0aa441155fae6bc4939492731b8ff4
+# Source0-md5:	3218222bff472648aa6663d018ee8cb7
 # https://gitlab.gnome.org/GNOME/grilo-plugins/merge_requests/49.patch
 Patch0:		%{name}-libdmapsharing4.patch
 URL:		https://wiki.gnome.org/Projects/Grilo
