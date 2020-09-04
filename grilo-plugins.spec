@@ -3,21 +3,19 @@
 %bcond_without	libdmapsharing4		# libdmapsharing 4 (3.9.x) instead of 3 (2.9.x)
 
 %if %{with libdmapsharing4}
-%define		libdmapsharing_ver	3.9.4
+%define		libdmapsharing_ver	3.9.9
 %else
 %define		libdmapsharing_ver	2.9.12
 %endif
 Summary:	Collection of plugins for Grilo
 Summary(pl.UTF-8):	Zestaw wtyczek dla Grilo
 Name:		grilo-plugins
-Version:	0.3.11
+Version:	0.3.12
 Release:	1
 License:	LGPL v2.1+
 Group:		Applications/Multimedia
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/grilo-plugins/0.3/%{name}-%{version}.tar.xz
-# Source0-md5:	3218222bff472648aa6663d018ee8cb7
-# https://gitlab.gnome.org/GNOME/grilo-plugins/merge_requests/49.patch
-Patch0:		%{name}-libdmapsharing4.patch
+# Source0-md5:	194957f6d0124ac77d4733b5c9191c7a
 URL:		https://wiki.gnome.org/Projects/Grilo
 BuildRequires:	avahi-glib-devel
 BuildRequires:	avahi-gobject-devel
@@ -25,7 +23,7 @@ BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.44
 BuildRequires:	gmime-devel >= 2.6.0
 BuildRequires:	gnome-online-accounts-devel >= 3.18.0
-BuildRequires:	gom-devel >= 0.3.2
+BuildRequires:	gom-devel >= 0.4
 BuildRequires:	gperf
 BuildRequires:	grilo-devel >= 0.3.8
 BuildRequires:	gstreamer-devel >= 1.0
@@ -58,7 +56,7 @@ BuildRequires:	yelp-tools
 Requires:	glib2 >= 1:2.44
 Requires:	gmime >= 2.6.0
 Requires:	gnome-online-accounts-libs >= 3.18.0
-Requires:	gom >= 0.3.2
+Requires:	gom >= 0.4
 Requires:	grilo >= 0.3.8
 Requires:	libdmapsharing >= %{libdmapsharing_ver}
 Requires:	libgdata >= 0.9.1
@@ -80,9 +78,6 @@ różnych dostawców treści multimedialnych.
 
 %prep
 %setup -q
-%if %{with libdmapsharing4}
-%patch0 -p1
-%endif
 
 %build
 %meson build
@@ -142,7 +137,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-musicbrainz-coverart.lua
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-radiofrance.gresource
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-radiofrance.lua
-%{_datadir}/grilo-plugins/grl-lua-factory/grl-spotify-cover.lua
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-steam-store.lua
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-theaudiodb-cover.lua
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-thegamesdb.lua
