@@ -11,7 +11,7 @@ Summary:	Collection of plugins for Grilo
 Summary(pl.UTF-8):	Zestaw wtyczek dla Grilo
 Name:		grilo-plugins
 Version:	0.3.12
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		Applications/Multimedia
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/grilo-plugins/0.3/%{name}-%{version}.tar.xz
@@ -143,11 +143,21 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-video-title-parsing.lua
 
 %dir %{_datadir}/help/C/examples
-%dir %{_datadir}/help/cs/examples
-%dir %{_datadir}/help/de/examples
-%dir %{_datadir}/help/es/examples
-%dir %{_datadir}/help/pl/examples
-%dir %{_datadir}/help/pt_BR/examples
-%dir %{_datadir}/help/sv/examples
-%{_datadir}/help/*/examples/example-tmdb.c
+%{_datadir}/help/C/examples/example-tmdb.c
+%lang(cs) %dir %{_datadir}/help/cs/examples
+%lang(cs) %{_datadir}/help/cs/examples/example-tmdb.c
+%lang(da) %dir %{_datadir}/help/da/examples
+%lang(da) %{_datadir}/help/da/examples/example-tmdb.c
+%lang(de) %dir %{_datadir}/help/de/examples
+%lang(de) %{_datadir}/help/de/examples/example-tmdb.c
+%lang(es) %dir %{_datadir}/help/es/examples
+%lang(es) %{_datadir}/help/es/examples/example-tmdb.c
+%lang(pl) %dir %{_datadir}/help/pl/examples
+%lang(pl) %{_datadir}/help/pl/examples/example-tmdb.c
+%lang(pt_BR) %dir %{_datadir}/help/pt_BR/examples
+%lang(pt_BR) %{_datadir}/help/pt_BR/examples/example-tmdb.c
+%lang(sv) %dir %{_datadir}/help/sv/examples
+%lang(sv) %{_datadir}/help/sv/examples/example-tmdb.c
+%lang(uk) %dir %{_datadir}/help/uk/examples
+%lang(uk) %{_datadir}/help/uk/examples/example-tmdb.c
 %{_pkgconfigdir}/grilo-plugins-0.3.pc
