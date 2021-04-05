@@ -10,18 +10,17 @@
 Summary:	Collection of plugins for Grilo
 Summary(pl.UTF-8):	Zestaw wtyczek dla Grilo
 Name:		grilo-plugins
-Version:	0.3.12
-Release:	2
+Version:	0.3.13
+Release:	1
 License:	LGPL v2.1+
 Group:		Applications/Multimedia
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/grilo-plugins/0.3/%{name}-%{version}.tar.xz
-# Source0-md5:	194957f6d0124ac77d4733b5c9191c7a
+Source0:	https://download.gnome.org/sources/grilo-plugins/0.3/%{name}-%{version}.tar.xz
+# Source0-md5:	4c33227c77a821b704a003e4a374a380
 URL:		https://wiki.gnome.org/Projects/Grilo
 BuildRequires:	avahi-glib-devel
 BuildRequires:	avahi-gobject-devel
 BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.44
-BuildRequires:	gmime-devel >= 2.6.0
 BuildRequires:	gnome-online-accounts-devel >= 3.18.0
 BuildRequires:	gom-devel >= 0.4
 BuildRequires:	gperf
@@ -35,7 +34,6 @@ BuildRequires:	libdmapsharing-devel < 4.9
 %else
 BuildRequires:	libdmapsharing-devel < 3.9
 %endif
-BuildRequires:	libgcrypt-devel
 BuildRequires:	libgdata-devel >= 0.9.1
 BuildRequires:	libmediaart2-devel >= 1.9
 BuildRequires:	liboauth-devel
@@ -43,29 +41,27 @@ BuildRequires:	libsoup-devel >= 2.4
 BuildRequires:	libtool >= 2:2.2.6
 BuildRequires:	libxml2-devel >= 2.0
 BuildRequires:	lua53-devel >= 5.3.0
-BuildRequires:	meson >= 0.37.0
+BuildRequires:	meson >= 0.44.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	sqlite3-devel >= 3
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	totem-pl-parser-devel >= 3.4.1
-BuildRequires:	tracker-devel >= 2.3.0
+BuildRequires:	tracker3-devel >= 3.0
 BuildRequires:	xz
 BuildRequires:	yelp-tools
 Requires:	glib2 >= 1:2.44
-Requires:	gmime >= 2.6.0
 Requires:	gnome-online-accounts-libs >= 3.18.0
 Requires:	gom >= 0.4
 Requires:	grilo >= 0.3.8
 Requires:	libdmapsharing >= %{libdmapsharing_ver}
 Requires:	libgdata >= 0.9.1
 Requires:	totem-pl-parser >= 3.4.1
-Requires:	tracker >= 2.3.0
+Requires:	tracker3 >= 3.0
 Suggests:	dleyna-server
-Obsoletes:	totem-jamendo
-Obsoletes:	totem-tracker
-Obsoletes:	totem-upnp
+Obsoletes:	totem-tracker < 3.2
+Obsoletes:	totem-upnp < 3.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -80,7 +76,8 @@ różnych dostawców treści multimedialnych.
 %setup -q
 
 %build
-%meson build
+%meson build \
+	-Denable-tracker=no
 
 %ninja_build -C build
 
@@ -107,7 +104,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrlflickr.so
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrlfreebox.so
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrlgravatar.so
-%attr(755,root,root) %{_libdir}/grilo-0.3/libgrljamendo.so
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrllocalmetadata.so
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrlluafactory.so
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrlmagnatune.so
@@ -119,8 +115,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrlshoutcast.so
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrlthetvdb.so
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrltmdb.so
-%attr(755,root,root) %{_libdir}/grilo-0.3/libgrltracker.so
-%attr(755,root,root) %{_libdir}/grilo-0.3/libgrlvimeo.so
+%attr(755,root,root) %{_libdir}/grilo-0.3/libgrltracker3.so
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrlyoutube.so
 %dir %{_datadir}/grilo-plugins
 %dir %{_datadir}/grilo-plugins/grl-lua-factory
