@@ -10,12 +10,12 @@
 Summary:	Collection of plugins for Grilo
 Summary(pl.UTF-8):	Zestaw wtyczek dla Grilo
 Name:		grilo-plugins
-Version:	0.3.13
-Release:	2
+Version:	0.3.14
+Release:	1
 License:	LGPL v2.1+
 Group:		Applications/Multimedia
 Source0:	https://download.gnome.org/sources/grilo-plugins/0.3/%{name}-%{version}.tar.xz
-# Source0-md5:	4c33227c77a821b704a003e4a374a380
+# Source0-md5:	ec62a8be27c9da23d6ed816c714146cd
 URL:		https://wiki.gnome.org/Projects/Grilo
 BuildRequires:	avahi-glib-devel
 BuildRequires:	avahi-gobject-devel
@@ -41,7 +41,7 @@ BuildRequires:	libsoup-devel >= 2.4
 BuildRequires:	libtool >= 2:2.2.6
 BuildRequires:	libxml2-devel >= 2.0
 BuildRequires:	lua53-devel >= 5.3.0
-BuildRequires:	meson >= 0.44.0
+BuildRequires:	meson >= 0.47.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.736
