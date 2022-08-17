@@ -7,20 +7,21 @@
 %else
 %define		libdmapsharing_ver	2.9.12
 %endif
+%define		soup_api	%(pkg-config --variable=soupapiversion grilo-net-0.3)
 Summary:	Collection of plugins for Grilo
 Summary(pl.UTF-8):	Zestaw wtyczek dla Grilo
 Name:		grilo-plugins
-Version:	0.3.14
+Version:	0.3.15
 Release:	1
 License:	LGPL v2.1+
 Group:		Applications/Multimedia
 Source0:	https://download.gnome.org/sources/grilo-plugins/0.3/%{name}-%{version}.tar.xz
-# Source0-md5:	ec62a8be27c9da23d6ed816c714146cd
+# Source0-md5:	b2a12b3a244b4a8841dd56f1511586d3
 URL:		https://wiki.gnome.org/Projects/Grilo
 BuildRequires:	avahi-glib-devel
 BuildRequires:	avahi-gobject-devel
 BuildRequires:	gettext-tools
-BuildRequires:	glib2-devel >= 1:2.44
+BuildRequires:	glib2-devel >= 1:2.66
 BuildRequires:	gnome-online-accounts-devel >= 3.18.0
 BuildRequires:	gom-devel >= 0.4
 BuildRequires:	gperf
@@ -34,10 +35,14 @@ BuildRequires:	libdmapsharing-devel < 4.9
 %else
 BuildRequires:	libdmapsharing-devel < 3.9
 %endif
-BuildRequires:	libgdata-devel >= 0.9.1
+BuildRequires:	libgdata-devel >= 0.17.0
 BuildRequires:	libmediaart2-devel >= 1.9
 BuildRequires:	liboauth-devel
+%if "%{soup_api}" == "2.4"
 BuildRequires:	libsoup-devel >= 2.4
+%else
+BuildRequires:	libsoup3-devel >= 3.0
+%endif
 BuildRequires:	libtool >= 2:2.2.6
 BuildRequires:	libxml2-devel >= 2.0
 BuildRequires:	lua53-devel >= 5.3.0
@@ -51,12 +56,12 @@ BuildRequires:	totem-pl-parser-devel >= 3.4.1
 BuildRequires:	tracker3-devel >= 3.0
 BuildRequires:	xz
 BuildRequires:	yelp-tools
-Requires:	glib2 >= 1:2.44
+Requires:	glib2 >= 1:2.66
 Requires:	gnome-online-accounts-libs >= 3.18.0
 Requires:	gom >= 0.4
 Requires:	grilo >= 0.3.8
 Requires:	libdmapsharing >= %{libdmapsharing_ver}
-Requires:	libgdata >= 0.9.1
+Requires:	libgdata >= 0.17.0
 Requires:	totem-pl-parser >= 3.4.1
 Requires:	tracker3 >= 3.0
 Suggests:	dleyna-server
@@ -139,6 +144,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %dir %{_datadir}/help/C/examples
 %{_datadir}/help/C/examples/example-tmdb.c
+%lang(ca) %dir %{_datadir}/help/ca/examples
+%lang(ca) %{_datadir}/help/ca/examples/example-tmdb.c
 %lang(cs) %dir %{_datadir}/help/cs/examples
 %lang(cs) %{_datadir}/help/cs/examples/example-tmdb.c
 %lang(da) %dir %{_datadir}/help/da/examples
@@ -147,6 +154,14 @@ rm -rf $RPM_BUILD_ROOT
 %lang(de) %{_datadir}/help/de/examples/example-tmdb.c
 %lang(es) %dir %{_datadir}/help/es/examples
 %lang(es) %{_datadir}/help/es/examples/example-tmdb.c
+%lang(eu) %dir %{_datadir}/help/eu/examples
+%lang(eu) %{_datadir}/help/eu/examples/example-tmdb.c
+%lang(gl) %dir %{_datadir}/help/gl/examples
+%lang(gl) %{_datadir}/help/gl/examples/example-tmdb.c
+%lang(hu) %dir %{_datadir}/help/hu/examples
+%lang(hu) %{_datadir}/help/hu/examples/example-tmdb.c
+%lang(nl) %dir %{_datadir}/help/nl/examples
+%lang(nl) %{_datadir}/help/nl/examples/example-tmdb.c
 %lang(pl) %dir %{_datadir}/help/pl/examples
 %lang(pl) %{_datadir}/help/pl/examples/example-tmdb.c
 %lang(pt_BR) %dir %{_datadir}/help/pt_BR/examples
