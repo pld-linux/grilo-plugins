@@ -1,22 +1,34 @@
 #
 # Conditional build:
-%bcond_without	libdmapsharing4		# libdmapsharing 4 (3.9.x) instead of 3 (2.9.x)
+%bcond_without	libdmapsharing4	# libdmapsharing 4 (3.9.x) instead of 3 (2.9.x) for libsoup 2.4
+%bcond_without	libgdata	# libgdata based youtube support (libsoup 2.4 only)
 
+%define		soup_api	%(pkg-config --variable=soupapiversion grilo-net-0.3 2>/dev/null || echo 2.4)
+
+%if "%{soup_api}" == "2.4"
+%undefine	with_libgdata
 %if %{with libdmapsharing4}
 %define		libdmapsharing_ver	3.9.9
+%define		libdmapsharing_ver_lt	3.9.11
 %else
 %define		libdmapsharing_ver	2.9.12
+%define		libdmapsharing_ver_lt	3.9
 %endif
-%define		soup_api	%(pkg-config --variable=soupapiversion grilo-net-0.3)
+%else
+%define		libdmapsharing_ver	3.9.11
+%define		libdmapsharing_ver_lt	4.9
+%endif
+
 Summary:	Collection of plugins for Grilo
 Summary(pl.UTF-8):	Zestaw wtyczek dla Grilo
 Name:		grilo-plugins
-Version:	0.3.15
+Version:	0.3.16
 Release:	1
 License:	LGPL v2.1+
 Group:		Applications/Multimedia
 Source0:	https://download.gnome.org/sources/grilo-plugins/0.3/%{name}-%{version}.tar.xz
-# Source0-md5:	b2a12b3a244b4a8841dd56f1511586d3
+# Source0-md5:	0b80dfb3622293b0f170c72e2f08b3d0
+Patch0:		%{name}-libdmapsharing4.patch
 URL:		https://wiki.gnome.org/Projects/Grilo
 BuildRequires:	avahi-glib-devel
 BuildRequires:	avahi-gobject-devel
@@ -30,12 +42,8 @@ BuildRequires:	gstreamer-devel >= 1.0
 BuildRequires:	json-glib-devel
 BuildRequires:	libarchive-devel
 BuildRequires:	libdmapsharing-devel >= %{libdmapsharing_ver}
-%if %{with libdmapsharing4}
-BuildRequires:	libdmapsharing-devel < 4.9
-%else
-BuildRequires:	libdmapsharing-devel < 3.9
-%endif
-BuildRequires:	libgdata-devel >= 0.17.0
+BuildRequires:	libdmapsharing-devel < %{libdmapsharing_ver_lt}
+%{?with_libgdata:BuildRequires:	libgdata-devel >= 0.17.0}
 BuildRequires:	libmediaart2-devel >= 1.9
 BuildRequires:	liboauth-devel
 %if "%{soup_api}" == "2.4"
@@ -61,7 +69,7 @@ Requires:	gnome-online-accounts-libs >= 3.18.0
 Requires:	gom >= 0.4
 Requires:	grilo >= 0.3.8
 Requires:	libdmapsharing >= %{libdmapsharing_ver}
-Requires:	libgdata >= 0.17.0
+%{?with_libgdata:Requires:	libgdata >= 0.17.0}
 Requires:	totem-pl-parser >= 3.4.1
 Requires:	tracker3 >= 3.0
 Suggests:	dleyna-server
@@ -79,10 +87,12 @@ różnych dostawców treści multimedialnych.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %meson build \
-	-Denable-tracker=no
+	-Denable-tracker=no \
+	%{!?with_libgdata:-Denable-youtube=no}
 
 %ninja_build -C build
 
@@ -121,7 +131,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrlthetvdb.so
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrltmdb.so
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrltracker3.so
+%if %{with libgdata}
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrlyoutube.so
+%endif
 %dir %{_datadir}/grilo-plugins
 %dir %{_datadir}/grilo-plugins/grl-lua-factory
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-acoustid.lua

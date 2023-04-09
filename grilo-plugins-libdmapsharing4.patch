@@ -1,0 +1,20 @@
+--- grilo-plugins-0.3.16/meson.build.orig	2023-04-03 11:39:37.000000000 +0200
++++ grilo-plugins-0.3.16/meson.build	2023-04-09 11:23:58.650337715 +0200
+@@ -84,10 +84,15 @@ else
+   libgdata_dep = dependency('unresolvable-dep', required: false)
+ endif
+ 
+-libdmapsharing4_dep = dependency('libdmapsharing-4.0', version: '>= 3.9.11', required: false)
+ if soup_api_version == '2.4'
+-  libdmapsharing_dep = dependency('libdmapsharing-3.0', version: '>= 2.9.12', required: false)
++  libdmapsharing4_dep = dependency('libdmapsharing-4.0', version: '< 3.9.11', required: false)
++  if libdmapsharing4_dep.found()
++    libdmapsharing_dep = libdmapsharing4_dep
++  else
++    libdmapsharing_dep = dependency('libdmapsharing-3.0', version: '>= 2.9.12', required: false)
++  endif
+ else
++  libdmapsharing4_dep = dependency('libdmapsharing-4.0', version: '>= 3.9.11', required: false)
+   libdmapsharing_dep = libdmapsharing4_dep
+ endif
+ 
