@@ -6,7 +6,6 @@
 %define		soup_api	%(pkg-config --variable=soupapiversion grilo-net-0.3 2>/dev/null || echo 2.4)
 
 %if "%{soup_api}" == "2.4"
-%undefine	with_libgdata
 %if %{with libdmapsharing4}
 %define		libdmapsharing_ver	3.9.9
 %define		libdmapsharing_ver_lt	3.9.11
@@ -15,6 +14,7 @@
 %define		libdmapsharing_ver_lt	3.9
 %endif
 %else
+%undefine	with_libgdata
 %define		libdmapsharing_ver	3.9.11
 %define		libdmapsharing_ver_lt	4.9
 %endif
@@ -23,7 +23,7 @@ Summary:	Collection of plugins for Grilo
 Summary(pl.UTF-8):	Zestaw wtyczek dla Grilo
 Name:		grilo-plugins
 Version:	0.3.16
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		Applications/Multimedia
 Source0:	https://download.gnome.org/sources/grilo-plugins/0.3/%{name}-%{version}.tar.xz
@@ -123,7 +123,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrlluafactory.so
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrlmagnatune.so
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrlmetadatastore.so
+%if "%{soup_api}" == "2.4"
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrlopensubtitles.so
+%endif
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrlopticalmedia.so
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrlpodcasts.so
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrlraitv.so
