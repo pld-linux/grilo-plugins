@@ -22,12 +22,12 @@
 Summary:	Collection of plugins for Grilo
 Summary(pl.UTF-8):	Zestaw wtyczek dla Grilo
 Name:		grilo-plugins
-Version:	0.3.16
-Release:	3
+Version:	0.3.18
+Release:	1
 License:	LGPL v2.1+
 Group:		Applications/Multimedia
 Source0:	https://download.gnome.org/sources/grilo-plugins/0.3/%{name}-%{version}.tar.xz
-# Source0-md5:	0b80dfb3622293b0f170c72e2f08b3d0
+# Source0-md5:	4ff2feaf4da5a00e02efd471f23c9d18
 Patch0:		%{name}-libdmapsharing4.patch
 URL:		https://wiki.gnome.org/Projects/Grilo
 BuildRequires:	avahi-glib-devel
@@ -57,7 +57,8 @@ BuildRequires:	lua53-devel >= 5.3.0
 BuildRequires:	meson >= 0.47.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
-BuildRequires:	rpmbuild(macros) >= 1.736
+BuildRequires:	rpmbuild(macros) >= 2.042
+BuildRequires:	sed >= 4.0
 BuildRequires:	sqlite3-devel >= 3
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	totem-pl-parser-devel >= 3.4.1
@@ -89,17 +90,21 @@ różnych dostawców treści multimedialnych.
 %setup -q
 %patch -P0 -p1
 
-%build
-%meson build \
-	-Denable-tracker=no \
-	%{!?with_libgdata:-Denable-youtube=no}
+# disable localsearch tests
+%{__sed} -i -e "/subdir('tracker3')/d" tests/meson.build
 
-%ninja_build -C build
+%build
+%meson \
+	-Denable-tracker=no \
+	%{!?with_libgdata:-Denable-youtube=no} \
+	-Dgoa=enabled
+
+%meson_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%ninja_install -C build
+%meson_install
 
 %find_lang %{name} --with-gnome
 
@@ -128,7 +133,6 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrlopticalmedia.so
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrlpodcasts.so
-%attr(755,root,root) %{_libdir}/grilo-0.3/libgrlraitv.so
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrlshoutcast.so
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrlthetvdb.so
 %attr(755,root,root) %{_libdir}/grilo-0.3/libgrltmdb.so
@@ -139,16 +143,15 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_datadir}/grilo-plugins
 %dir %{_datadir}/grilo-plugins/grl-lua-factory
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-acoustid.lua
-%{_datadir}/grilo-plugins/grl-lua-factory/grl-appletrailers.gresource
-%{_datadir}/grilo-plugins/grl-lua-factory/grl-appletrailers.lua
-%{_datadir}/grilo-plugins/grl-lua-factory/grl-euronews.gresource
-%{_datadir}/grilo-plugins/grl-lua-factory/grl-euronews.lua
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-guardianvideos.gresource
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-guardianvideos.lua
+%{_datadir}/grilo-plugins/grl-lua-factory/grl-iptv.gresource
+%{_datadir}/grilo-plugins/grl-lua-factory/grl-iptv.lua
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-itunes-podcast.gresource
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-itunes-podcast.lua
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-lastfm-cover.lua
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-musicbrainz-coverart.lua
+%{_datadir}/grilo-plugins/grl-lua-factory/grl-opensubtitles.lua
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-radiofrance.gresource
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-radiofrance.lua
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-steam-store.lua
@@ -170,6 +173,8 @@ rm -rf $RPM_BUILD_ROOT
 %lang(es) %{_datadir}/help/es/examples/example-tmdb.c
 %lang(eu) %dir %{_datadir}/help/eu/examples
 %lang(eu) %{_datadir}/help/eu/examples/example-tmdb.c
+%lang(fr) %dir %{_datadir}/help/fr/examples
+%lang(fr) %{_datadir}/help/fr/examples/example-tmdb.c
 %lang(gl) %dir %{_datadir}/help/gl/examples
 %lang(gl) %{_datadir}/help/gl/examples/example-tmdb.c
 %lang(hu) %dir %{_datadir}/help/hu/examples
@@ -180,6 +185,8 @@ rm -rf $RPM_BUILD_ROOT
 %lang(pl) %{_datadir}/help/pl/examples/example-tmdb.c
 %lang(pt_BR) %dir %{_datadir}/help/pt_BR/examples
 %lang(pt_BR) %{_datadir}/help/pt_BR/examples/example-tmdb.c
+%lang(ru) %dir %{_datadir}/help/ru/examples
+%lang(ru) %{_datadir}/help/ru/examples/example-tmdb.c
 %lang(sv) %dir %{_datadir}/help/sv/examples
 %lang(sv) %{_datadir}/help/sv/examples/example-tmdb.c
 %lang(uk) %dir %{_datadir}/help/uk/examples
