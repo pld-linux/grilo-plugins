@@ -23,7 +23,7 @@ Summary:	Collection of plugins for Grilo
 Summary(pl.UTF-8):	Zestaw wtyczek dla Grilo
 Name:		grilo-plugins
 Version:	0.3.18
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		Applications/Multimedia
 Source0:	https://download.gnome.org/sources/grilo-plugins/0.3/%{name}-%{version}.tar.xz
